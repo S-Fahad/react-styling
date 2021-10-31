@@ -10,18 +10,45 @@ export function Title() {
     </div>
   );
 }
-export function SubHeading() {
-  return (
-    <div className="subHeading">
-      <button>To see styling in class component</button>
-      <button>To see styling in functional component</button>
-    </div>
-  );
+
+export class SubHeading extends Component {
+  state = {
+    func: false,
+    cls: false,
+  };
+  changeFunc = () => {
+    this.state.func === false
+      ? this.setState({ func: true })
+      : this.setState({ func: false });
+  };
+  changeCls = () => {
+    this.state.cls === false
+      ? this.setState({ cls: true })
+      : this.setState({ cls: false });
+  };
+  render() {
+    return (
+      <div>
+        <div className="subHeading">
+          <button onClick={this.changeFunc}>
+            To see styling in functional component
+          </button>
+          <button onClick={this.changeCls}>
+            To see styling in class component
+          </button>
+        </div>
+        <div className="flex">
+          {this.state.func == true ? <FunctionComponent /> : null}
+          {this.state.cls === true ? <ClassComponent /> : null}
+        </div>
+      </div>
+    );
+  }
 }
 
 function FunctionComponent() {
   return (
-    <div>
+    <div className="content">
       <h1>This is created using functional Component</h1>
       <p>This is done using external CSS</p>
       <p>This is done using inline CSS</p>
@@ -29,17 +56,13 @@ function FunctionComponent() {
   );
 }
 
-export class ClassComponent extends Component {
+class ClassComponent extends Component {
   render() {
     return (
-      <div className="body">
-        <FunctionComponent />
-
-        <div>
-          <h1>This is created using class Component</h1>
-          <p>This is done using external CSS</p>
-          <p>This is done using inline CSS</p>
-        </div>
+      <div className="content">
+        <h1>This is created using class Component</h1>
+        <p>This is done using external CSS</p>
+        <p>This is done using inline CSS</p>
       </div>
     );
   }
