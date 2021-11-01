@@ -4,5 +4,5 @@ body {
     rgb(236, 166, 205),
     rgb(188, 229, 235)
   );
-  height: 100vh;
+  min-height: 100vh;
 }

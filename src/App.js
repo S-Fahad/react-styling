@@ -38,7 +38,7 @@ export class SubHeading extends Component {
           </button>
         </div>
         <div className="flex">
-          {this.state.func == true ? <FunctionComponent /> : null}
+          {this.state.func === true ? <FunctionComponent /> : null}
           {this.state.cls === true ? <ClassComponent /> : null}
         </div>
       </div>
